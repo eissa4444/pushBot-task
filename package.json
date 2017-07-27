@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/eissa4444/pushBot-task#readme",
   "dependencies": {
-    "apns": "^0.1.0",
+    "apn": "^2.1.5",
     "body-parser": "^1.17.2",
     "config": "^1.26.1",
     "express": "^4.15.3",

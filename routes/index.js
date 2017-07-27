@@ -4,7 +4,7 @@ let Device = models.Device;
 let router = express.Router();
 let http = require('http');
 let querystring = require('querystring');
-let apns = require("apns")
+let apn = require("apn")
 
 //register end point  
 router.post('/register/:token', function (req, res, next) {
@@ -37,8 +37,7 @@ router.post('/push/:token', function (req, res, next) {
 
 let pushNotification = function (token, msg, res) {
     let apikey = "AIzaSyAcDkr8-aXdZGWzEk2BRCW5ujwjXzEojFw";
-    let iosCertificate =
-        platform = checkPlatform(token);
+    platform = checkPlatform(token);
     let notification = '';
     //android
     if (platform === 1) {
@@ -69,17 +68,27 @@ let pushNotification = function (token, msg, res) {
         post_req.end();
         res.json("push success")
     } else if (platform === 0) {   //IOS
-        let options, connection, notification;
-        options = {
-            keyFile: "",
-            certFile: "certificates/cert.pem",
-            debug: true
+        let options = {
+            token: {
+                key: "certificates/cert.pem",
+                keyId: "",
+                teamId: ""
+            },
+            production: false
         };
-        connection = new apns.Connection(options);
-        notification = new apns.Notification();
-        notification.device = new apns.Device(token);
-        notification.alert = msg;
-        connection.sendNotification(notification);
+
+        let note = new apn.Notification();
+        note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
+        note.badge = 3;
+        note.sound = "ping.aiff";
+        note.alert = msg;
+        note.payload = { 'messageFrom': 'pushBot' };
+        note.topic = "topic";
+        var apnProvider = new apn.Provider(options);
+
+        apnProvider.send(note, deviceToken).then((result) => {
+            res.json(result);
+        });
     }
 }
 //0=>ios and 1=>android
