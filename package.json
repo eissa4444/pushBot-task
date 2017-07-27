@@ -18,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/eissa4444/pushBot-task/issues"
   },
-  "homepage": "https://github.com/eissa4444/pushBot-task#readme"
+  "homepage": "https://github.com/eissa4444/pushBot-task#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.2"
+  }
 }
