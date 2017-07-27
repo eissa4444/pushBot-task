@@ -1,6 +1,8 @@
 
 // BASE SETUP
 // =============================================================================
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/pushBot');
 
 // call the packages we need
 var express    = require('express');        // call express
