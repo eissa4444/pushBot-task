@@ -31,7 +31,7 @@ router.post('/register/:token', function (req, res, next) {
 });
 
 router.post('/push/:token', function (req, res, next) {
-    pushNotification(token,"hello first push",res);
+    pushNotification(req.params.token,"hello first push",res);
 })
 
 //0=>ios and 1=>android
