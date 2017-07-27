@@ -1,0 +1,22 @@
+{
+  "name": "pushbot-task",
+  "version": "1.0.0",
+  "description": "push notification api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eissa4444/pushBot-task.git"
+  },
+  "keywords": [
+    "push-notification"
+  ],
+  "author": "Muhamad Eissa <eissa3101652.me@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eissa4444/pushBot-task/issues"
+  },
+  "homepage": "https://github.com/eissa4444/pushBot-task#readme"
+}
